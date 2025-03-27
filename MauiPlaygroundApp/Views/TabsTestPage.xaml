@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:tabs="http://sharpnado.com"
+             x:Class="MauiPlaygroundApp.Views.TabsTestPage"
+             Title="TabsTestPage">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+
+            <Style x:Key="MaterialTabStyle" TargetType="tabs:MaterialUnderlinedTabItem">
+                <Setter Property="SelectedTabColor" Value="{StaticResource Primary}" />
+                <!--<Setter Property="SelectedTabTextColor" Value="{StaticResource Secondary}" />-->
+                <Setter Property="IconSize" Value="24" />
+                <Setter Property="FontFamily" Value="OpenSansRegular" />
+                <Setter Property="LabelSize" Value="14" />
+                <Setter Property="UnderlineAllTab" Value="True" />
+                <Setter Property="UnselectedLabelColor" Value="{StaticResource Gray200}" />
+            </Style>
+
+            <Style x:Key="BottomTabStyle"
+                BasedOn="{StaticResource MaterialTabStyle}"
+                TargetType="tabs:MaterialUnderlinedTabItem">
+                <Setter Property="LabelSize" Value="12" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <VerticalStackLayout VerticalOptions="End" BackgroundColor="Yellow">
+        <!--<Grid RowDefinitions="*,Auto" VerticalOptions="Center" BackgroundColor="Green">-->
+            <Label 
+            Text="Welcome to New Tabs!" FontSize="15"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+            <!--<tabs:TabHostView Grid.Row="0"
+                      WidthRequest="370"
+                      HeightRequest="40"
+                      Margin="15"
+                      HorizontalOptions="Center"
+                      VerticalOptions="Start"
+                      CornerRadius="10"
+                      IsSegmented="True"
+                      SegmentedHasSeparator="True"
+                      SelectedIndex="{Binding Source={x:Reference switcher}, Path=SelectedIndex, Mode=TwoWay}"
+                      TabType="Fixed">
+                <tabs:TabHostView.Tabs>
+                    <tabs:SegmentedTabItem Label="Uno"
+                                   SelectedLabelColor="Green"
+                                   SelectedTabColor="Transparent" />
+                    <tabs:SegmentedTabItem Label="Due"
+                                   SelectedLabelColor="Orange"
+                                   SelectedTabColor="Yellow" />
+                </tabs:TabHostView.Tabs>
+            </tabs:TabHostView>
+            <tabs:ViewSwitcher x:Name="switcher" Grid.Row="1" />-->
+
+            <tabs:TabHostView x:Name="TabHostButton"
+                  Margin="0"
+                  BackgroundColor="{StaticResource Secondary}" VerticalOptions="End">
+                
+                <tabs:MaterialUnderlinedTabItem Style="{StaticResource BottomTabStyle}"
+                                    IconImageSource="dotnet_bot.png"
+                                    IconOptions="TopIcon"
+                                    IconTextSpacing="0"
+                                    Label="Super" 
+                                    SelectedTabColor="{StaticResource Magenta}"
+                                    UnselectedLabelColor="{StaticResource MidnightBlue}" />
+
+                <tabs:MaterialUnderlinedTabItem Style="{StaticResource BottomTabStyle}"
+                                    IconImageSource="home.png"
+                                    IconOptions="TopIcon"
+                                    IconTextSpacing="0"
+                                    Label="Duper"
+                                    SelectedTabColor="{StaticResource Magenta}"
+                                    UnselectedLabelColor="{StaticResource MidnightBlue}" />
+
+                <tabs:TabButton x:Name="TabButton"
+                    ButtonBackgroundColor="{StaticResource Primary}"
+                    ButtonCircleSize="60"
+                    ButtonPadding="12"
+                    IconImageSource="plus_circle.png"
+                    TranslationY="-15" />
+                
+                <tabs:MaterialUnderlinedTabItem Style="{StaticResource BottomTabStyle}"
+                                    IconImageSource="settings.png"
+                                    IconOptions="TopIcon"
+                                    IconTextSpacing="0"
+                                    Label="MAUI" 
+                                    SelectedTabColor="{StaticResource Magenta}"
+                                    UnselectedLabelColor="{StaticResource MidnightBlue}" />
+                
+                <tabs:MaterialUnderlinedTabItem Style="{StaticResource BottomTabStyle}"
+                                    IconImageSource="user_circle.png"
+                                    IconOptions="TopIcon"
+                                    IconTextSpacing="0"
+                                    Label="Sample"
+                                    SelectedTabColor="{StaticResource Magenta}"
+                                    UnselectedLabelColor="{StaticResource MidnightBlue}" />
+            </tabs:TabHostView>
+
+        <!--</Grid>-->
+
+    </VerticalStackLayout>
+</ContentPage>

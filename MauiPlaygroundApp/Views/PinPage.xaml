@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="MauiPlaygroundApp.Views.PinPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pinView="clr-namespace:PINView.Maui;assembly=PINView.Maui"
+    Title="PinPage">
+
+    <Grid Margin="20,40,20,20" VerticalOptions="Fill">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!--  New PIN Entry Box  -->
+        <VerticalStackLayout Grid.Row="0" Spacing="15">
+            <Label HorizontalTextAlignment="Center" Text="Enter new PIN" />
+            <pinView:PINView
+                x:Name="newPINView"
+                BoxFocusAnimation="ZoomInOut"
+                IsPassword="True"
+                PINValue="{Binding NewPIN}"
+                Style="{StaticResource PINViewStyle}" />
+        </VerticalStackLayout>
+
+        <!--  Confirm PIN Entry Box  -->
+        <StackLayout
+            Grid.Row="1"
+            Margin="0,40,0,0"
+            Spacing="15">
+
+            <Label HorizontalTextAlignment="Center" Text="Confirm PIN" />
+            <pinView:PINView
+                x:Name="confirmPINView"
+                AutoDismissKeyboard="True"
+                BoxFocusAnimation="ZoomInOut"
+                IsPassword="True"
+                PINValue="{Binding ConfirmPIN}"
+                Style="{StaticResource PINViewStyle}" />
+        </StackLayout>
+
+        <!--  SAVE Button  -->
+        <Button
+            Grid.Row="2"
+            Command="{Binding SavePINCommand}"
+            Style="{StaticResource ButtonStyle}"
+            Text="SAVE"
+            VerticalOptions="End" />
+    </Grid>
+
+
+</ContentPage>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="MauiPlaygroundApp.Views.ReadSMSMessagesPage"
+             Title="SMS Reader">
+    <ContentPage.Behaviors>
+        <toolkit:StatusBarBehavior StatusBarColor="#2d006c" StatusBarStyle="LightContent" />
+    </ContentPage.Behaviors>
+
+    <VerticalStackLayout BackgroundColor="#D7D7D8" Padding="10" Spacing="5">
+        <Grid BackgroundColor="Transparent" RowSpacing="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Button Grid.Row="0" Margin="5,0,5,0" Grid.Column="0" Text="Read SMS" x:Name="ReadSMSButton" FontSize="Default" Clicked="ReadSMSButton_Clicked"  />
+            <Entry Margin="5,0,5,0" Grid.Row="0" Grid.Column="1" x:Name="SMSCountEntry" Placeholder="Enter SMS Count" Text="200" FontSize="18" FontAttributes="Bold" TextColor="Blue" MaxLength="5" WidthRequest="75" />
+
+            <Label Margin="5,0,5,0" Grid.Row="1" Grid.Column="0" Text="Total Debit Amount: " FontSize="Body" FontAttributes="Bold" TextColor="Blue" />
+            <Label Grid.Row="1" Grid.Column="1" Text="{Binding TotalDebitTransactionsAmount}" FontSize="Body" FontAttributes="Bold" TextColor="Blue"  />
+
+            <Label Margin="5,0,5,0" Grid.Row="2" Grid.Column="0" Text="Total Credit Amount: " FontSize="Body" FontAttributes="Bold" TextColor="Blue" />
+            <Label Grid.Row="2" Grid.Column="1" Text="{Binding TotalCreditTransactionsAmount}"  FontSize="Body" FontAttributes="Bold" TextColor="Blue" />
+
+        </Grid>
+
+        <CollectionView ItemsSource="{Binding SMSMessages}" BackgroundColor="Transparent" HeightRequest="530">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border Stroke="Blue" StrokeThickness="0" Background="#ffffff" Padding="10" 
+                            HorizontalOptions="Center" Margin="5">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="10" />
+                        </Border.StrokeShape>
+                        <StackLayout Spacing="5">
+                            <Label Text="{Binding Address}" FontAttributes="Bold" TextColor="Blue" />
+                            <Label Text="{Binding Message}" />
+                            <Label Text="{Binding Date}" FontSize="Small" TextColor="ForestGreen" FontAttributes="Bold" />
+                        </StackLayout>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+    </VerticalStackLayout>
+</ContentPage>

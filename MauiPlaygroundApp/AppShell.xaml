@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="MauiPlaygroundApp.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:MauiPlaygroundApp"
+    xmlns:localViews="clr-namespace:MauiPlaygroundApp.Views"
+    xmlns:controls="clr-namespace:MauiPlaygroundApp.CustomControls"
+    Shell.FlyoutBehavior="Flyout"
+    Shell.TitleColor="#ffffff"
+    Shell.ForegroundColor="#ffffff"
+    Shell.BackgroundColor="#2d006c"
+    Title="MauiPlaygroundApp">
+
+    <!--<ShellContent
+        Title="Home"
+        ContentTemplate="{DataTemplate local:MainPage}"
+        Route="MainPage" />
+
+    <ShellContent
+        Title="PIN Page"
+        ContentTemplate="{DataTemplate localViews:PinPage}"
+        Route="PinPage" />-->
+
+    <TabBar>
+        <Tab Title="Home" Icon="home.png">
+            <ShellContent
+            Title="Read SMS"
+            ContentTemplate="{DataTemplate localViews:ReadSMSMessagesPage}"
+            Route="ReadSMSMessagesPage" />
+        </Tab>
+        <Tab Title="PIN Page" Icon="dotnet_bot.png">
+            <ShellContent
+            Title="PIN Page"
+            ContentTemplate="{DataTemplate localViews:PinPage}"
+            Route="PinPage" />
+        </Tab>
+        <Tab Title="Add" Icon="plus_circle.png">
+            <ShellContent
+                Title="Add"
+                ContentTemplate="{DataTemplate localViews:TabsTestPage}"
+                Route="TabsTestPage">
+                <!--<ShellContent.Icon>
+                    <controls:CircularIconControl />
+                </ShellContent.Icon>-->
+            </ShellContent>
+        </Tab>
+        <Tab Title="Settings" Icon="settings.png">
+            <ShellContent
+            Title="Settings"
+            ContentTemplate="{DataTemplate localViews:SettingsPage}"
+            Route="SettingsPage" />
+        </Tab>
+        <Tab Title="Profile" Icon="user_circle.png">
+            <ShellContent
+            Title="Profile"
+            ContentTemplate="{DataTemplate localViews:ProfilePage}"
+            Route="ProfilePage" />
+        </Tab>
+    </TabBar>
+
+</Shell>
